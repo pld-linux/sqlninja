@@ -1,0 +1,32 @@
+diff -up ./sqlninja.orig ./sqlninja
+--- ./sqlninja.orig	2010-09-25 17:34:29.806283674 +0530
++++ ./sqlninja	2010-09-25 18:21:43.634034448 +0530
+@@ -64,7 +64,7 @@ my %options;
+ my $ask;_();getopts('gvm:f:p:w:u:d:',\%options) or usage();
+ my $genscript = "";
+ my $verbose = $options{v};
+-my $confile = $options{f} || "sqlninja.conf";
++my $confile = $options{f} || "/etc/sqlninja.conf";
+ my $password = $options{p} || "";
+ my $wordlist = $options{w};
+ my $user = $options{u};
+@@ -250,15 +250,15 @@ if (($mode eq "test") || ($mode eq "t"))
+ 	my $uplfile;
+ 	while ($uplfile eq "") {
+ 		print "  Binary or script file to upload:\n";
+-		print "  shortcuts: 1=apps/nc.exe 2=apps/dnstun.exe 3=apps/churrasco.exe\n> ";
++		print "  shortcuts: 1=nc.exe 2=dnstun.exe 3=churrasco.exe\n> ";
+ 		$uplfile = <STDIN>;
+ 		chomp $uplfile;
+ 		if ($uplfile eq "1") {
+-			$uplfile = "apps/nc.exe";
++			$uplfile = "/usr/share/sqlninja/apps/nc.exe";
+ 		} elsif ($uplfile eq "2") {
+-			$uplfile = "apps/dnstun.exe";
++			$uplfile = "/usr/share/sqlninja/apps/dnstun.exe";
+ 		} elsif ($uplfile eq "3") {
+-			$uplfile = "apps/churrasco.exe";
++			$uplfile = "/usr/share/sqlninja/apps/churrasco.exe";
+ 		}
+ 	}
+ 	upload($uplfile);
